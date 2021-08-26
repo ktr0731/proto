@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+option go_package = "github.com/ktr0731/proto/pb/internal/testpb";
+
+package testdata;
+
+message Message {
+  enum Enum {
+    FOO = 0;
+    BAR = 1;
+    BAZ = 2;
+  }
+
+  // Varint.
+  int32 int32_field = 1;
+  int64 int64_field = 2;
+  uint32 uint32_field = 3;
+  uint64 uint64_field = 4;
+  sint32 sint32_field = 5;
+  sint64 sint64_field = 6;
+  bool bool_field = 7;
+  Enum enum_field = 8;
+
+  // Fixed64
+  fixed64 fixed64_field = 9;
+  sfixed64 sfixed64_field = 10;
+  double double_field = 11;
+
+  // Bytes
+  string string_field = 12;
+  bytes bytes_field = 13;
+  EmbeddedMessage embedded_message_field = 14;
+
+  // Fixed32
+  fixed32 fixed32_field = 15;
+  sfixed32 sfixed32_field = 16;
+  float float_field = 17;
+
+  // Repeated
+  repeated int32 repeated_packed_int32_field = 18;
+  repeated int32 repeated_int32_field = 19 [packed=false];
+  repeated int64 repeated_packed_int64_field = 20;
+  repeated int64 repeated_int64_field = 21 [packed=false];
+  repeated uint32 repeated_packed_uint32_field = 22;
+  repeated uint32 repeated_uint32_field = 23 [packed=false];
+  repeated uint64 repeated_packed_uint64_field = 24;
+  repeated uint64 repeated_uint64_field = 25 [packed=false];
+  repeated sint32 repeated_packed_sint32_field = 26;
+  repeated sint32 repeated_sint32_field = 27 [packed=false];
+  repeated sint64 repeated_packed_sint64_field = 28;
+  repeated sint64 repeated_sint64_field = 29 [packed=false];
+  repeated bool repeated_packed_bool_field = 30;
+  repeated bool repeated_bool_field = 31 [packed=false];
+  repeated Enum repeated_packed_enum_field = 32;
+  repeated Enum repeated_enum_field = 33 [packed=false];
+  repeated fixed64 repeated_packed_fixed64_field = 34;
+  repeated fixed64 repeated_fixed64_field = 35 [packed=false];
+  repeated sfixed64 repeated_packed_sfixed64_field = 36;
+  repeated sfixed64 repeated_sfixed64_field = 37 [packed=false];
+  repeated double repeated_packed_double_field = 38;
+  repeated double repeated_double_field = 39 [packed=false];
+  repeated string repeated_string_field = 40;
+  repeated bytes repeated_bytes_field = 41;
+  repeated fixed32 repeated_packed_fixed32_field = 42;
+  repeated fixed32 repeated_fixed32_field = 43 [packed=false];
+  repeated sfixed32 repeated_packed_sfixed32_field = 44;
+  repeated sfixed32 repeated_sfixed32_field = 45 [packed=false];
+  repeated float repeated_packed_float_field = 46;
+  repeated float repeated_float_field = 47 [packed=false];
+  repeated EmbeddedMessage repeated_embedded_message_field = 48;
+
+  map<int32, int32> map_int32 = 49;
+  map<int64, int64> map_int64 = 50;
+  map<uint32, uint32> map_uint32 = 51;
+  map<uint64, uint64> map_uint64 = 52;
+  map<sint32, sint32> map_sint32 = 53;
+  map<sint64, sint64> map_sint64 = 54;
+  map<fixed32, fixed32> map_fixed32 = 55;
+  map<fixed64, fixed64> map_fixed64 = 56;
+  map<sfixed32, sfixed32> map_sfixed32 = 57;
+  map<sfixed64, sfixed64> map_sfixed64 = 58;
+  map<bool, bool> map_bool = 59;
+  map<string, string> map_string = 60;
+  map<string, bytes> map_bytes = 61;
+  map<string, float> map_float = 62;
+  map<string, double> map_double = 63;
+  map<string, Enum> map_enum = 64;
+  map<string, EmbeddedMessage> map_message = 65;
+
+  oneof oneof_field {
+    uint32 oneof_uint32_field = 70;
+    EmbeddedMessage oneof_message_field = 71;
+    string oneof_string_field = 72;
+    bytes oneof_bytes_field = 73;
+    bool oneof_bool_field = 74;
+    uint64 oneof_uint64_field = 75;
+    double oneof_double_field = 76;
+    Enum oneof_enum_field = 77;
+  }
+}
+
+message EmbeddedMessage {
+  int32 field = 1;
+  Message circular_field = 2;
+}
